@@ -17,22 +17,48 @@ public:
         heapTam=0;
     }
     
-    ///método que regresa el padre de un nodo
+    ///método que regresa el indice del padre de un nodo
+    int Padre(int k){ // recibe el hijo
+            return k/2; //si no es raiz
+    }
     
-}
-///método para regresar el hijo izquierdo de un nodo
-
-
-///método para regresar el hijo derecho de un nodo
-
-
-///Método para insertar un valor
-
-///Método para imprimir el Heap
-
-
+    ///método para regresar el indice del hijo izquierdo de un nodo
+    int HijoIzq(int k){//recibe un padre
+        if(k*2 <= capacidad){
+            return k*2; //si tiene hijo izquierdo
+        }else{
+            return -1; //si no tiene hijo izquierdo
+        }
+    }
+    
+    ///método para regresar el indice del hijo derecho de un nodo
+    int HijoDer(int k){// recibe padre
+        if(k*2+1 <= capacidad){
+            return k*2+1;
+        }else{
+            return -1;
+        }
+    }
+    
+    ///Método para insertar un valor
+    void Insertar(int Valor){
+        int Temp;
+        heapTam++;
+        arr[heapTam] = Valor;
+        if(arr[Padre(heapTam)] > arr[heapTam]){
+            Temp = arr[Padre(heapTam)];
+            arr[Padre(heapTam)] = arr[heapTam];
+            arr[heapTam] = Temp;
+        }
+    }
+    
+    ///Método para imprimir el Heap
+    void Imprimir(){
+        for(int i = 1; i<= capacidad; i++){
+            cout << arr[i] << " " ;
+        }
+    }
+    
 };
-
-
 
 #endif // HEAP_H_INCLUDED
