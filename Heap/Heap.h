@@ -14,7 +14,7 @@ public:
     Heap(int capacidad){
         this->capacidad = capacidad;
         arr=new int[capacidad];
-        heapTam=0;
+        heapTam=1;
     }
     
     ///método que regresa el indice del padre de un nodo
@@ -43,13 +43,13 @@ public:
     ///Método para insertar un valor
     void Insertar(int Valor){
         int Temp;
-        heapTam++;
         arr[heapTam] = Valor;
         if(arr[Padre(heapTam)] > arr[heapTam]){
             Temp = arr[Padre(heapTam)];
             arr[Padre(heapTam)] = arr[heapTam];
             arr[heapTam] = Temp;
         }
+        heapTam++;
     }
     
     ///Método para imprimir el Heap
